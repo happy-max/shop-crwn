@@ -22,3 +22,7 @@
 .header .options .option {
   padding: 10px 25px;
 }
+.header .empty-string{
+  font-size: 20px;
+  margin: 50px auto;
+}
