@@ -3,13 +3,13 @@ import 'firebase/firestore'
 import 'firebase/auth'
 
 const config = {
-    apiKey: 'AIzaSyCdHT-AYHXjF7wOrfAchX4PIm3cSj5tn14',
-    authDomain: 'crwn-db.firebaseapp.com',
-    databaseURL: 'https://crwn-db.firebaseio.com',
-    projectId: 'crwn-db',
-    storageBucket: 'crwn-db.appspot.com',
-    messagingSenderId: '850995411664',
-    appId: '1:850995411664:web:7ddc01d597846f65'
+    apiKey: "AIzaSyC13niZ97EsResvd2fJWtKw23UK32Gc_-8",
+    authDomain: "shop-2d94a.firebaseapp.com",
+    projectId: "shop-2d94a",
+    storageBucket: "shop-2d94a.appspot.com",
+    messagingSenderId: "571745187126",
+    appId: "1:571745187126:web:1f04df4fb63b1707502f97",
+    measurementId: "G-1CWVCNN1HF"
 }
 
 firebase.initializeApp(config)
@@ -20,6 +20,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
     const userRef = firestore.doc(`users/${userAuth.uid}`)
     const snapShot = await userRef.get()
+
 
     if(!snapShot.exists){
         const {displayName, email} = userAuth
