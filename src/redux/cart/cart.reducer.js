@@ -2,10 +2,9 @@ import CartActionTypes from './cart.types'
 import {addItemToCart, decreaseQuantity} from './cart.utils'
 
 
-
 const INITIAL_STATE = {
     hidden: true,
-    cartItems: []
+    cartItems: [],
 }
 const cartReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
@@ -28,6 +27,11 @@ const cartReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 cartItems: decreaseQuantity(state.cartItems, action.payload)
+            }
+        case CartActionTypes.CLEAR_CART:
+            return {
+                ...state,
+                cartItems: []
             }
         default:
             return state

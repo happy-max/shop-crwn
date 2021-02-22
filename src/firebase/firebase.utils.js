@@ -5,6 +5,7 @@ import 'firebase/auth'
 const config = {
     apiKey: "AIzaSyC13niZ97EsResvd2fJWtKw23UK32Gc_-8",
     authDomain: "shop-2d94a.firebaseapp.com",
+    databaseURL: "https://shop-2d94a-default-rtdb.firebaseio.com",
     projectId: "shop-2d94a",
     storageBucket: "shop-2d94a.appspot.com",
     messagingSenderId: "571745187126",
@@ -39,7 +40,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     return userRef
 }
 
-export const addCollectionAndDocument = (collectionKey, objectsToAdd) => {
+export const addCollectionAndDocument = async (collectionKey, objectsToAdd) => {
     const collectionRef = firestore.collection(collectionKey)
 
     const batch = firestore.batch()
@@ -47,7 +48,7 @@ export const addCollectionAndDocument = (collectionKey, objectsToAdd) => {
         const newDocRef = collectionRef.doc()
         batch.set(newDocRef, obj)
     })
-    batch.commit()
+   await batch.commit()
 }
 
 export const convertCollectionsSnapshotToMap = collections => {
@@ -67,12 +68,21 @@ export const convertCollectionsSnapshotToMap = collections => {
     }, {})
 }
 
+export const getCurrentUser = () => {
+    return new Promise((resolve, reject) => {
+        const unsubscribe = auth.onAuthStateChanged(userAuth => {
+            unsubscribe()
+            resolve(userAuth)
+        }, reject)
+    })
+}
+
 export const auth = firebase.auth()
 export const firestore = firebase.firestore()
 
-const provider = new firebase.auth.GoogleAuthProvider()
-provider.setCustomParameters({prompt: 'select_account'})
-export const signInWithGoogle = () => auth.signInWithPopup(provider)
+export const googleProvider = new firebase.auth.GoogleAuthProvider()
+googleProvider.setCustomParameters({prompt: 'select_account'})
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider)
 export default firebase
 
 
