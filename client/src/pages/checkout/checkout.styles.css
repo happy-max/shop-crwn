@@ -35,3 +35,16 @@
 .checkout-page .arrow{
     cursor: pointer;
 }
+
+@media screen and (max-width: 800px) {
+    .checkout-page {
+        width: 85%;
+        margin-left: 0;
+    }
+    .checkout-page .checkout-header .header-block{
+        width: 22%;
+    }
+    .checkout-page .checkout-header .header-block:last-child{
+        width: 12px;
+    }
+}

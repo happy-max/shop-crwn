@@ -26,3 +26,12 @@
     cursor: pointer;
     color: red;
 }
+@media screen and (max-width: 800px) {
+    .checkout-item{
+        font-size: 18px;
+    }
+    .checkout-item .name, .checkout-item .quantity, .checkout-item .price{
+        width: 22%;
+    }
+
+}

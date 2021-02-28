@@ -14,7 +14,6 @@ import './App.css'
 
 
 const App = ({ checkUserSession, currentUser}) => {
-
     useEffect(() => {
        checkUserSession()
     }, [checkUserSession])
@@ -34,7 +33,6 @@ const App = ({ checkUserSession, currentUser}) => {
                                <SignInAndSignUpPage/>
                                )
                            }/>
-
                     <Route render={() => <h2>Page not found</h2>}/>
                 </Switch>
             </div>
@@ -48,6 +46,5 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = dispatch => ({
     checkUserSession: ()=>dispatch(checkUserSession())
 })
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

@@ -61,3 +61,9 @@
   font-weight: lighter;
   font-size: 16px;
 }
+@media screen and (max-width: 800px) {
+  .menu-item{
+    height: 380px;
+  }
+
+}
